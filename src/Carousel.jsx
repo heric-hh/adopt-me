@@ -6,7 +6,13 @@ class Carousel extends Component {
   };
 
   static defaultProps = {
-    images: ["http://pets-images.dev-apis-com/pets/none.jpg"],
+    images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
+  };
+
+  handleIndexClick = (e) => {
+    this.setState({
+      active: +e.target.dataset.index,
+    });
   };
 
   render() {
@@ -23,6 +29,8 @@ class Carousel extends Component {
               src={photo}
               className={index === active ? "active" : ""}
               alt="animal thumbnail"
+              onClick={this.handleIndexClick}
+              data-index={index}
             />
           ))}
         </div>
